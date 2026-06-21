@@ -2,7 +2,10 @@
 #include "FileSystem.h"
 #include "Storage.h"
 #include "Utility.h"
-
+#ifdef _WIN32
+#include <windows.h>
+#include <shellapi.h>
+#endif
 #include <filesystem>
 #include <iostream>
 #include <string>
@@ -17,7 +20,8 @@ void printHelp() {
               << "  search <name>         Recursively search from current directory\n"
               << "  info <path>           Show file metadata\n"
               << "  help                  Show commands\n"
-              << "  exit | quit           Close the program\n";
+              << "  exit | quit           Close the program\n"
+              << "  open <path>           Open file or folder\n";
 }
 
 void printDirectory(const Directory& directory) {
@@ -119,6 +123,17 @@ int main() {
             system("clear");
         #endif
             break;
+        case CommandType::Open: {
+            if (command.args.empty()) {
+                std::cout << "Usage: open <path>\n";
+                break;
+            }
+            const auto path = joinArgs(command.args);
+            ShellExecuteW(nullptr, L"open",
+                std::filesystem::path(path).wstring().c_str(),
+                nullptr, nullptr, SW_SHOWNORMAL);
+            break;
+        }
         }
     }
 

@@ -11,8 +11,9 @@ enum class CommandType {
     Search,
     Info,
     Help,
-    Clear,   // add this
+    Clear,   
     Exit,
+    Open,    
     Invalid
 };
 struct Command {

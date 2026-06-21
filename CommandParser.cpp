@@ -22,6 +22,7 @@ Command CommandParser::parse(const std::string& input) const {
         {"quit", CommandType::Exit},
         {"clear", CommandType::Clear},
         {"cls", CommandType::Clear},
+        {"open", CommandType::Open},
     };
 
     Command command;
