@@ -11,7 +11,7 @@ enum class CommandType {
     Search,
     Info,
     Help,
-    Clear,   // add this
+    Clear, 
     Exit,
     Invalid
 };
