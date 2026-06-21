@@ -123,7 +123,7 @@ int main() {
             system("clear");
         #endif
             break;
-        case CommandType::Open: {
+        case CommandType::open: {
             if (command.args.empty()) {
                 std::cout << "Usage: open <path>\n";
                 break;
